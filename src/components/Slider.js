@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import DrumPad from './components/DrumPad.js';
 import './App.css';
 
-class DrumPad extends Component {
+class Slider extends Component {
   render() {
     return (
-      <div className="drum-pad">
-        <div id="display"></div>
+      <div className="slider">
+        <div className="line"></div>
+        <div className="indicator"></div>
       </div>
     );
   }
 }
 
-export default DrumPad;
+export default Slider;

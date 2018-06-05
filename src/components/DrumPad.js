@@ -3,11 +3,11 @@ import DrumPad from './components/DrumPad.js';
 import './App.css';
 
 class DrumPad extends Component {
-  clicker = () => this.props.clicker(this.props.letter);
+  playSound = () => document.getElementById(this.props.letter).play();
 
   render() {
     return (
-      <div className="drum-pad" onClick={this.clicker}>
+      <div className="drum-pad" onClick={this.playSound}>
         {this.props.letter}
         <audio src={this.props.url} className="clip" id={this.props.letter}></audio>
       </div>

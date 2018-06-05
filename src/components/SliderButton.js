@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import DrumPad from './components/DrumPad.js';
+import SquareButton from './SquareButton.js';
 import './App.css';
 
-class DrumPad extends Component {
+class SliderButton extends Component {
   render() {
     return (
-      <div className="drum-pad">
-        <div id="display"></div>
+      <div className="slider-button">
+        <SquareButton/>
+        <SquareButton/>
       </div>
     );
   }
 }
 
-export default DrumPad;
+export default SliderButton;
