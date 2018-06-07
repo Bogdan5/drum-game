@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DrumPad from './components/DrumPad.js';
+import { connect } from 'react-redux';
 import './App.css';
 
 class DrumPad extends Component {
@@ -15,4 +15,6 @@ class DrumPad extends Component {
   }
 }
 
-export default DrumPad;
+const mapStateToProps = (state) => { nameButton: state.nameButton };
+
+export default (mapStateToProps)(DrumPad);

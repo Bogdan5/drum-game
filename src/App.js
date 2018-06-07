@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Display from './components/Display.js';
+import DrumPad from './components/DrumPad.js';
+import store from './store/';
 import './App.css';
 
 class App extends Component {
@@ -26,7 +28,7 @@ class App extends Component {
     return (
       <div id="drum-machine" className="Display">
         {this.state.drumPads.map((item, index)=><DrumPad clicker={this.drumBeat}
-        url={item.url}/>)};
+        url={item.url} store={store}/>)};
         <div id="display">
           <SliderButton/>
           <Display/>
