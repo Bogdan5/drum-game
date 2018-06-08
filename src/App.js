@@ -29,7 +29,7 @@ class App extends Component {
       <div id="drum-machine" className="Display">
         {this.state.drumPads.map((item, index)=><DrumPad clicker={this.drumBeat}
         url={item.url} store={store}/>)};
-        <div id="display">
+        <div id="display" className="display">
           <SliderButton/>
           <Display/>
           <Slider/>

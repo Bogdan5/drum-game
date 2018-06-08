@@ -17,4 +17,8 @@ class DrumPad extends Component {
 
 const mapStateToProps = (state) => { nameButton: state.nameButton };
 
+const mapDispatchToProps = (duspatch) => {
+  
+}
+
 export default (mapStateToProps)(DrumPad);
