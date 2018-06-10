@@ -4,7 +4,7 @@ import './App.css';
 class SuareButton extends Component {
   render() {
     return (
-      <div className="square-button"></div>
+      <div className="square-button" onClick={this.props.clicked}></div>
     );
   }
 }

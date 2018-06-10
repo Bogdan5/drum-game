@@ -6,8 +6,7 @@ class SliderButton extends Component {
   render() {
     return (
       <div className="slider-button">
-        <SquareButton/>
-        <SquareButton/>
+        <SquareButton clicked={}/>
       </div>
     );
   }
