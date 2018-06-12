@@ -3,6 +3,8 @@ import Display from './components/Display.js';
 import DrumPad from './components/DrumPad.js';
 import store from './store/';
 import './App.css';
+import { Provider } from 'react-redux';
+import store from './store/index.js';
 
 class App extends Component {
   constructor(props) {
@@ -26,16 +28,18 @@ class App extends Component {
 
   render() {
     return (
-      <div id="drum-machine" className="Display">
+      <Provider store={store}>
+        <div id="drum-machine" className="Display">
         {this.state.drumPads.map((item, index)=><DrumPad clicker={this.drumBeat}
         url={item.url} store={store}/>)};
-        <div id="display" className="display">
-          <SliderButton/>
-          <Display/>
-          <Slider/>
-          <SliderButton/>
+          <div id="display" className="display">
+            <SliderButton/>
+            <Display/>
+            <Slider/>
+            <SliderButton/>
+          </div>
         </div>
-      </div>
+      </Provider>
     );
   }
 }

@@ -2,12 +2,7 @@ import { createStore } from 'redux';
 
 const initialState = { nameButton: '' };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case
-    default:
-      return state;
-  }
-};
+const store = createStore(allReducers, initialState, window.devToolsExtension &&
+window.devToolsExtension());
 
-const store = constructStore(reducer);
+export default store;
