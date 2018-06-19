@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import './App.css';
 
 class DrumPad extends Component {
-  playSound = () => document.getElementById(this.props.letter).play();
+  playSound = () => {
+    document.getElementById(this.props.letter).play();
+    this.props.clickDrum(this.props.letter);
+  };
 
   render() {
     return (
@@ -15,10 +18,12 @@ class DrumPad extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ nameButton: state.nameButton });
+// const mapStateToProps = (state) => ({ nameButton: state.nameButton });
 
 const mapDispatchToProps = (dispatch) => {
-  
+  clickDrum: (name) => {
+    dispatch(drumBeat(name));
+  };
 };
 
-export default (mapStateToProps)(DrumPad);
+export default (mapDispatchToProps)(DrumPad);

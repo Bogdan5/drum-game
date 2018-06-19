@@ -4,8 +4,9 @@ import { drumBeat, sliderMove } from '../actions/types.js';
 
 const initialState = {
   drumClicked: '',
-  slider1: 0,
-  slider2: 0,
+  slider: 0,
+  position: 0,
+  gameStarted: false,
 };
 
 const drumReducer = (state=initialState, action) => {
