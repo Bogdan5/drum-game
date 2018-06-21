@@ -23,8 +23,10 @@ class StartSlider extends Component {
   }
 }
 
+const maptStateToProps = (state) => ({ gameStarted: state.gameStarted });
+
 const mapDispatchToProps = (dispatch) => ({
-  start: () => { dispatch(startGame()); },
+  start: () => { dispatch(startGame(!this.props.gameStarted)); },
 });
 
 export default StartSlider;

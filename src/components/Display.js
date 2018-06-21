@@ -4,8 +4,8 @@ import './App.css';
 class Display extends Component {
   render() {
     return (
-      <div className="Display">
-    
+      <div id="display" className="Display">
+
       </div>
     );
   }

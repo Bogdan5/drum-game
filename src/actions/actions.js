@@ -4,4 +4,4 @@ export const drumBeat = (name) => ({ type: DRUM_CLICKED, nameButton: name, });
 
 export const sliderMove = (position) => ({ type: SLIDER_MOVED, position: position, });
 
-export const startGame = () => ({ type: START, gameStarted: true });
+export const startGame = (started) => ({ type: START, gameStarted: started });

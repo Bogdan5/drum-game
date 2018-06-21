@@ -29,10 +29,12 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div id="drum-machine" className="Display">
-        {this.state.drumPads.map((item, index)=><DrumPad clicker={this.drumBeat}
-        url={item.url} store={store}/>)};
-          <div id="display" className="display">
+        <div id="drum-machine" className="drum-machine">
+          <div className="button-group">
+            {this.state.drumPads.map((item, index)=><DrumPad clicker={this.drumBeat}
+            url={item.url} store={store}/>)};
+          </div>
+          <div className="display">
             <SliderButton/>
             <Display/>
             <Slider/>

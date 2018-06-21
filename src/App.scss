@@ -14,17 +14,22 @@ body{
   box-sizing: border-box;
 }
 
+//main app
 .drum-machine{
   margin: 30px auto;
+  width: 60%;
+  height: 200px;
+  padding: 20px;
   border: 2px solid white;
   border-radius: 3px;
   background-color: $brown;
   @include flex-display();
 }
 
-.display{
-  width: 120px;
-  height: 120px;
+//container for drum pads
+.button-group{
+  width: 45%;
+  height: 160px;
   @include flex-display();
 }
 
