@@ -10,15 +10,24 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { drumPads: [
-      { name: 'q', url: 'http://www.peter-weinberg.com/files/9114/8176/9796/Kick_n_Hat.wav', },
-      { name: 'w', url: 'http://www.peter-weinberg.com/files/9314/8176/9796/Heater-6.wav', },
-      { name: 'e', url: 'http://www.peter-weinberg.com/files/9114/8176/9796/Kick_n_Hat.wav', },
-      { name: 'a', url: 'http://www.peter-weinberg.com/files/9314/8176/9796/Heater-6.wav', },
-      { name: 's', url: 'http://www.peter-weinberg.com/files/9114/8176/9796/Kick_n_Hat.wav', },
-      { name: 'd', url: 'http://www.peter-weinberg.com/files/9314/8176/9796/Heater-6.wav', },
-      { name: 'z', url: 'http://www.peter-weinberg.com/files/9114/8176/9796/Kick_n_Hat.wav', },
-      { name: 'x', url: 'http://www.peter-weinberg.com/files/9314/8176/9796/Heater-6.wav', },
-      { name: 'c', url: 'http://www.peter-weinberg.com/files/9114/8176/9796/Kick_n_Hat.wav', },
+      { name: 'q', url: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3',
+        message: 'Heater-1', },
+      { name: 'w', url: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3',
+        message: 'Heater-2', },
+      { name: 'e', url: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3',
+        message: 'Heater-3', },
+      { name: 'a', url: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3',
+        message: 'Heater-4', },
+      { name: 's', url: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3',
+        message: 'Clap', },
+      { name: 'd', url: 'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3',
+        message: 'Open-HH', },
+      { name: 'z', url: 'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3',
+        message: "Kick-n/'-Hat", },
+      { name: 'x', url: 'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3',
+        message: 'Kick', },
+      { name: 'c', url: 'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3',
+        message: 'Closed-HH', },
     ], };
   };
 
@@ -32,7 +41,7 @@ class App extends Component {
         <div id="drum-machine" className="drum-machine">
           <div className="button-group">
             {this.state.drumPads.map((item, index)=><DrumPad clicker={this.drumBeat}
-            url={item.url} store={store}/>)};
+            url={item.url} message={item.message} store={store}/>)};
           </div>
           <div className="display">
             <SliderButton/>
