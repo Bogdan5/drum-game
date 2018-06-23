@@ -26,4 +26,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default (mapDispatchToProps)(DrumPad);
+export default connect(mapDispatchToProps)(DrumPad);

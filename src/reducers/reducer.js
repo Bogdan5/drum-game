@@ -7,7 +7,7 @@ const initialState = {
   slider: 0,
   position: 0,
   gameStarted: false,
-  bank: true,
+  bank: false,
 };
 
 const drumReducer = (state=initialState, action) => {
