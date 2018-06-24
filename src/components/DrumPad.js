@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './App.css';
+import { drumBeat, sliderMove, startGame, bankChange } from '../actions/actions.js';
+import '../App.css';
 
 class DrumPad extends Component {
   playSound = () => {

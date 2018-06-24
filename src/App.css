@@ -1,0 +1,75 @@
+body {
+  background-color: #6c0505;
+  box-sizing: border-box; }
+
+.drum-machine {
+  margin: 30px auto;
+  width: 60%;
+  height: 200px;
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 3px;
+  background-color: #321b1c;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
+
+.button-group {
+  width: 45%;
+  height: 160px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
+
+.drum-pad {
+  width: 30px;
+  height: 30px;
+  color: #57dd54;
+  background-color: #3b0303;
+  border: 2px solid black;
+  margin: 5px;
+  box-shadow: 5px 7px 5px #605359; }
+  .drum-pad:hover {
+    color: #1b7f19;
+    background-color: #cd0a0a; }
+
+.start-container {
+  box-sizing: border-box;
+  width: 50px;
+  height: 25px;
+  border: 2px solid red;
+  background-color: blue;
+  position: relative; }
+
+.start-button {
+  width: 25px;
+  height: 25px;
+  left: 0;
+  position: absolute;
+  z-index: 5;
+  -webkit-transition: left 2s;
+  /* For Safari 3.1 to 6.0 */
+  transition: left 2s; }
+
+.animate-right-start-button {
+  left: 15px; }
+
+.animate-left-start-button {
+  left: 0; }
+
+.slider-container {
+  box-sizing: border-box;
+  height: 40px;
+  width: 220px;
+  position: relative;
+  background-color: yellow;
+  border-top: 15px solid white;
+  border-bottom: 15px solid white; }
+
+.slider-button {
+  top: -15px;
+  height: 40px;
+  width: 20px;
+  position: absolute;
+  background-color: blue;
+  z-index: 5; }

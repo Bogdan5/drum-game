@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import Display from './components/Display.js';
 import DrumPad from './components/DrumPad.js';
-import
+import ButtonSlider from './components/ButtonSlider.js';
 import './App.css';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
+import store from './store/index.js';
+
+// import { store } from './store/index.js';
 
 class App extends Component {
   constructor(props) {
@@ -50,18 +53,20 @@ class App extends Component {
 
   render() {
     return (
+      <Provider store={store}>
         <div id="drum-machine" className="drum-machine">
           <div className="button-group">
             {this.state.drumPads.map((item, index)=><DrumPad key={index} clicker={this.drumBeat}
             url={item.url} message={item.message}/>)};
           </div>
           <div className="display">
-            <SliderButton purpose="gameStarted" actionDispatched="start"/>
+            <ButtonSlider purpose="gameStarted" actionDispatched="start"/>
             <Display/>
-            <Slider/>
-            <SliderButton purpose="gameStarted" actionDispatched="start"/>
+            {/* <Slider/> */}
+            {/* <SliderButton purpose="gameStarted" actionDispatched="start"/> */}
           </div>
         </div>
+      </Provider>
     );
   }
 }

@@ -24,3 +24,5 @@ const drumReducer = (state=initialState, action) => {
       return state;
   }
 };
+
+export default drumReducer;

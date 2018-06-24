@@ -15,21 +15,21 @@ class Slider extends Component {
     this.setState({ start: false });
   };
 
-  moving = () => {
-    if (this.state.start) {
-      //change ref
-      let inputRect =  ReactDOM.findDOMNode(this.refs['sliderButton'])
-      .getBoundingClientRect();
-      this.setState({ position: event.clientX - inputRect.left });
-    }
-  };
+  // moving = () => {
+  //   // if (this.state.start) {
+  //     //change ref
+  //     // let inputRect =  ReactDOM.findDOMNode(this.refs['sliderButton'])
+  //     // .getBoundingClientRect();
+  //     // this.setState({ position: event.clientX - inputRect.left });
+  //   // }
+  // };
 
   render() {
     return (
       <div className="slider-container">
         //change ref from string to function
-        <div ref="sliderButton" style={this.state.left} className="slider-button" onMouseDown={this.start}
-          onMouseUp={this.end} onMouseMove={this.moving}></div>
+        <div ref="sliderButton" style={this.state.left} className="slider-button"
+          onMouseDown={this.start} onMouseUp={this.end} onMouseMove={this.moving}></div>
       </div>
     );
   }
