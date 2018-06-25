@@ -65,6 +65,8 @@ body{
   z-index: 5;
   -webkit-transition: left 2s; /* For Safari 3.1 to 6.0 */
   transition: left 2s;
+  background-color: red;
+  border: 1px solid black;
 }
 
 .animate-right-start-button{

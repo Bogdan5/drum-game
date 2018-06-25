@@ -1,6 +1,6 @@
 import { DRUM_CLICKED, SLIDER_MOVED, START, BANK_CHANGED } from './types.js';
 
-export const drumBeat = (name) => ({ type: DRUM_CLICKED, nameButton: name, });
+export const drumBeat = (id) => ({ type: DRUM_CLICKED, drumClicked: id, });
 
 export const sliderMove = (position) => ({ type: SLIDER_MOVED, position: position, });
 

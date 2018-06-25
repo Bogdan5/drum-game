@@ -3,7 +3,7 @@ import { DRUM_CLICKED, SLIDER_MOVED, START, BANK_CHANGED } from '../actions/type
 import { drumBeat, sliderMove, startGame, bankChange } from '../actions/types.js';
 
 const initialState = {
-  drumClicked: '',
+  drumClicked: null,
   slider: 0,
   position: 0,
   gameStarted: false,
@@ -13,7 +13,7 @@ const initialState = {
 const drumReducer = (state=initialState, action) => {
   switch (action.type) {
     case DRUM_CLICKED:
-      return Object.assign({}, state, { drumClicked: action.nameButton });
+      return Object.assign({}, state, { drumClicked: action.drumClicked });
     case SLIDER_MOVED:
       return Object.assign({}, state, { position: action.position });
     case START:
