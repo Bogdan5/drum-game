@@ -10,10 +10,11 @@ class ButtonSlider extends Component {
   }
 
   startClick = (event) => {
-    let purpose = this.props.purpose;
+    // let purpose = this.props[purpose];
     let actionType = this.props.actionDispatched;
+    console.log(this.props.gameStarted);
     event.stopPropagation();
-    this.setState({ buttonClass: this.props[{ purpose }] ?
+    this.setState({ buttonClass: this.props.gameStarted ?
       'start-button animate-right-start-button' : 'start-button animate-left-start-button', });
     this.props.start();
   };
@@ -27,10 +28,14 @@ class ButtonSlider extends Component {
   }
 }
 
-const maptStateToProps = (state) => ({ gameStarted: state.gameStarted });
+const mapStateToProps = (state) => ({ gameStarted: state.gameStarted });
 
 const mapDispatchToProps = (dispatch) => ({
-  start: () => { dispatch(startGame(!this.props.gameStarted)); },//this function as a prop
-});
+    starts: (gameStarted) => { dispatch(startGame(gameStarted)); },
+  });
 
-export default connect(maptStateToProps, mapDispatchToProps)(ButtonSlider);
+const mergeProps = (propsFromState, propsFromDispatch, ownProps) => (
+    { start: propsFromDispatch.starts(propsFromState.gameStarted) }
+  );
+
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonSlider);
