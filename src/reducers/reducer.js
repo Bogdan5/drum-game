@@ -17,6 +17,7 @@ const drumReducer = (state=initialState, action) => {
     case SLIDER_MOVED:
       return Object.assign({}, state, { position: action.position });
     case START:
+      console.log('reducer start', action.gameStarted);
       return Object.assign({}, state, { gameStarted: !action.gameStarted });
     case BANK_CHANGED:
       return Object.assign({}, state, { bank: !action.bank });

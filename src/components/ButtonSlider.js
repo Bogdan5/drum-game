@@ -6,17 +6,16 @@ import '../App.css';
 class ButtonSlider extends Component {
   constructor(props) {
     super(props);
-    this.state = { buttonClass: 'start-button', startedLocal: false, };
+    this.state = { buttonClass: 'start-button' };
   }
 
   startClick = (event) => {
     // let purpose = this.props[purpose];
-    let actionType = this.props.actionDispatched;
-    console.log(this.props.gameStarted, this.state.startedLocal);
+    // let actionType = this.props.actionDispatched;
+    console.log(this.props);
     event.stopPropagation();
-    this.setState({ buttonClass: this.props.startedLocal ?
+    this.setState({ buttonClass: this.props.gameStarted ?
       'start-button animate-right-start-button' : 'start-button animate-left-start-button',
-      startedLocal: !this.state.startedLocal,
     });
     this.props.starts();
   };
@@ -32,13 +31,16 @@ class ButtonSlider extends Component {
 
 const mapStateToProps = (state) => ({ gameStarted: state.gameStarted });
 
-const mapDispatchToProps = (dispatch) => ({ starts: (isStarted) => {
-    dispatch(startGame(this.state.startedLocal));
-  },
+const mapDispatchToProps = (dispatch) => ({
+  dispatchStarts: (gameStarted) => dispatch(startGame(gameStarted)),
 });
 
-// const mergeProps = (propsFromState, propsFromDispatch, ownProps) => (
-//     { starts: propsFromDispatch.starts(propsFromState.gameStarted) }
-//   );
+const mergeProps = (propsFromState, propsFromDispatch) => (
+    {
+      ...propsFromState,
+      ...propsFromDispatch,
+      starts: propsFromDispatch.dispatchStarts(propsFromState.gameStarted),
+    }
+  );
 
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonSlider);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(ButtonSlider);
