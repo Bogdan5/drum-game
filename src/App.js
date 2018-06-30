@@ -58,10 +58,10 @@ class App extends Component {
             url={item.url} message={item.message} name={item.name} id={item.id}/>)};
           </div>
           <div className="display">
-            <ButtonSlider purpose="gameStarted" actionDispatched="start"/>
+            <ButtonSlider purpose="gameStarted" actionDispatched="startGame"/>
             <Display message={displayMessage}/>
             {/* <Slider/> */}
-            {/* <SliderButton purpose="gameStarted" actionDispatched="start"/> */}
+            <ButtonSlider purpose="bank" actionDispatched="bankChange"/>
           </div>
         </div>
     );

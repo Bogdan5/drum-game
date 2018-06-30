@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { drumBeat, sliderMove, startGame, bankChange } from '../actions/actions.js';
+import * as actionCreators from '../actions/actionCreators.js';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import '../App.css';
 
 class ButtonSlider extends Component {
@@ -10,14 +11,12 @@ class ButtonSlider extends Component {
   }
 
   startClick = (event) => {
-    // let purpose = this.props[purpose];
-    // let actionType = this.props.actionDispatched;
-    console.log(this.props);
     event.stopPropagation();
-    this.setState({ buttonClass: this.props.gameStarted ?
+    this.setState({ buttonClass: this.props[this.props.purpose] ?
       'start-button animate-right-start-button' : 'start-button animate-left-start-button',
     });
-    this.props.starts();
+    this.props['do' + this.props.purpose]();
+    console.log();
   };
 
   render() {
@@ -29,17 +28,24 @@ class ButtonSlider extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ gameStarted: state.gameStarted });
-
-const mapDispatchToProps = (dispatch) => ({
-  dispatchStarts: (gameStarted) => dispatch(startGame(gameStarted)),
+const mapStateToProps = (state, ownProps) => ({
+  [ownProps.purpose]: state[ownProps.purpose],
+  purpose: ownProps.purpose,
 });
 
-const mergeProps = (propsFromState, propsFromDispatch) => (
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  ['dispatch' + ownProps.purpose]: (gameStarted) => {
+    this.boundActionCreators = bindActionCreators(actionCreators, dispatch);
+    dispatch(this.boundActionCreators[ownProps.actionDispatched](gameStarted));
+  },
+});
+
+const mergeProps = (propsFromState, propsFromDispatch, ownProps) => (
     {
       ...propsFromState,
       ...propsFromDispatch,
-      starts: propsFromDispatch.dispatchStarts(propsFromState.gameStarted),
+      ['do' + ownProps.purpose]: () =>
+      propsFromDispatch['dispatch' + ownProps.purpose](propsFromState[ownProps.purpose]),
     }
   );
 
