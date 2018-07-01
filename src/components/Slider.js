@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 
 class Slider extends Component {
   constructor(props) {
@@ -8,27 +8,37 @@ class Slider extends Component {
   }
 
   start = () => {
-    this.setState({ start: true });
+    console.log('start');
+    !this.state.start && this.setState({ start: true });
   };
 
   end = () => {
-    this.setState({ start: false });
+    console.log('end');
+    this.state.start && this.setState({ start: false });
   };
 
-  // moving = () => {
-  //   // if (this.state.start) {
-  //     //change ref
-  //     // let inputRect =  ReactDOM.findDOMNode(this.refs['sliderButton'])
-  //     // .getBoundingClientRect();
-  //     // this.setState({ position: event.clientX - inputRect.left });
-  //   // }
-  // };
+  moving = (event) => {
+    if (this.state.start) {
+      this.positionSetter(event);
+    }
+  };
+
+  click = (event) => {
+    this.positionSetter(event);
+  };
+
+  positionSetter = (event) => {
+    let inputRect =  this.refs.sliderCont.getBoundingClientRect();
+    let dist = event.clientX - inputRect.left - 10;
+    console.log(event.clientX, dist, this.state.start);
+    dist >= 0 && dist < 200 && this.setState({ position: dist });
+  };
 
   render() {
     return (
-      <div className="slider-container">
-        //change ref from string to function
-        <div ref="sliderButton" style={this.state.left} className="slider-button"
+      <div className="slider-container" ref="sliderCont" onMouseLeave={this.end}
+        onClick={this.click}>
+        <div style={{ left: this.state.position }} className="slider-button"
           onMouseDown={this.start} onMouseUp={this.end} onMouseMove={this.moving}></div>
       </div>
     );

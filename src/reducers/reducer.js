@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux';
+// import { combineReducers } from 'redux';
 import { DRUM_CLICKED, SLIDER_MOVED, START, BANK_CHANGED } from '../actions/types.js';
-import { drumBeat, sliderMove, startGame, bankChange } from '../actions/actionCreators.js';
+// import { drumBeat, sliderMove, startGame, bankChange } from '../actions/actionCreators.js';
 
 const initialState = {
   drumClicked: null,

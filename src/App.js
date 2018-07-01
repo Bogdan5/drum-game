@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Display from './components/Display.js';
 import DrumPad from './components/DrumPad.js';
 import ButtonSlider from './components/ButtonSlider.js';
+import Slider from './components/Slider.js';
 import './App.css';
 import { connect } from 'react-redux';
 
@@ -60,7 +61,7 @@ class App extends Component {
           <div className="display">
             <ButtonSlider purpose="gameStarted" actionDispatched="startGame"/>
             <Display message={displayMessage}/>
-            {/* <Slider/> */}
+            <Slider/>
             <ButtonSlider purpose="bank" actionDispatched="bankChange"/>
           </div>
         </div>
