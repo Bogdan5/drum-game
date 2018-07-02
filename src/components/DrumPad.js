@@ -6,9 +6,9 @@ import '../App.css';
 class DrumPad extends Component {
   playSound = () => {
     let elem = document.getElementById(this.props.name);
-    elem.volume = 0.1;
-    elem.play();
-    this.props.clickDrum(this.props.id);
+    elem.volume = this.props.volume;
+    this.props.gameStarted && elem.play();
+    this.props.gameStarted && this.props.clickDrum(this.props.id);
   };
 
   render() {
@@ -21,11 +21,14 @@ class DrumPad extends Component {
   }
 }
 
-// const mapStateToProps = (state) => ({ nameButton: state.nameButton });
+const mapStateToProps = (state) => ({
+  volume: state.position,
+  gameStarted: state.gameStarted,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   clickDrum: (id) => {
     dispatch(drumBeat(id));
   }, });
 
-export default connect(null, mapDispatchToProps)(DrumPad);
+export default connect(mapStateToProps, mapDispatchToProps)(DrumPad);

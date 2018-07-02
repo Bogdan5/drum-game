@@ -5,7 +5,7 @@ import { DRUM_CLICKED, SLIDER_MOVED, START, BANK_CHANGED } from '../actions/type
 const initialState = {
   drumClicked: null,
   slider: 0,
-  position: 0,
+  position: 0.5,
   gameStarted: false,
   bank: false,
 };
