@@ -51,9 +51,9 @@ body {
   left: 0;
   position: absolute;
   z-index: 5;
-  -webkit-transition: left 2s;
+  -webkit-transition: left 0.5s;
   /* For Safari 3.1 to 6.0 */
-  transition: left 2s;
+  transition: left 0.5s;
   background-color: red;
   border: 1px solid black; }
 

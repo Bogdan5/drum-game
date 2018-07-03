@@ -6,8 +6,8 @@ const initialState = {
   drumClicked: null,
   slider: 0,
   position: 0.5,
-  gameStarted: false,
-  bank: false,
+  gameStarted: true,
+  bank: true,
 };
 
 const drumReducer = (state=initialState, action) => {
@@ -20,7 +20,7 @@ const drumReducer = (state=initialState, action) => {
       console.log('reducer start', action.gameStarted);
       return Object.assign({}, state, { gameStarted: !action.gameStarted });
     case BANK_CHANGED:
-      console.log('reducer bank', action.bank);
+      console.log('reducer bankk', action.bank);
       return Object.assign({}, state, { bank: !action.bank });
     default:
       return state;

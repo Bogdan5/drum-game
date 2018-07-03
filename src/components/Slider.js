@@ -35,7 +35,7 @@ class Slider extends Component {
     let dist = event.clientX - inputRect.left - 10;
     console.log(event.clientX, dist, this.state.start);
     dist >= 0 && dist < 200 && this.setState({ position: dist });
-    this.volumeChange(dist / 200);
+    this.props.volumeChange(dist / 200);
   };
 
   render() {
