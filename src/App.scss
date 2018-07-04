@@ -33,6 +33,7 @@ body{
   @include flex-display();
 }
 
+//each drum pad
 .drum-pad{
   width: 30px;
   height: 30px;
@@ -52,8 +53,8 @@ body{
   }
 }
 
-//StartSlider component
-.start-container{
+//SliderButton component
+.slider-button-container{
   box-sizing: border-box;
   width: 50px;
   height:25px;
@@ -62,7 +63,8 @@ body{
   position: relative;
 }
 
-.start-button{
+//the button that slides in the SliderButton component
+.slider-button{
   width: 25px;
   height: 25px;
   left: 0;
@@ -74,16 +76,18 @@ body{
   border: 1px solid black;
 }
 
-.animate-right-start-button{
+//added to move slider button to the right in SliderButton
+.animate-right-slider-button{
   left:15px;
 }
 
-.animate-left-start-button{
+//added to move slider button to the left in SliderButton
+.animate-left-slider-button{
   left:0;
 }
 
-//SliderButon component
-
+//Slider component
+//container in the Slider component
 .slider-container{
   box-sizing:border-box;
   height: 40px;
@@ -94,6 +98,7 @@ body{
   border-bottom: 15px solid white;
 }
 
+//button moved int eh Slider component
 .slider-button{
   top:-15px;
   height:40px;

@@ -7,20 +7,21 @@ import '../App.css';
 class ButtonSlider extends Component {
   constructor(props) {
     super(props);
-    this.state = { buttonClass: 'start-button' };
+    this.state = { buttonClass: 'slider-button' };
   }
 
+  //toggles start/stop games
   startClick = (event) => {
     event.stopPropagation();
     this.props['do' + this.props.purpose]();
     this.setState({ buttonClass: !this.props[this.props.purpose] ?
-      'start-button animate-right-start-button' : 'start-button animate-left-start-button',
+      'slider-button animate-right-slider-button' : 'start-button animate-left-slider-button',
     });
   };
 
   render() {
     return (
-      <div className="start-container" onClick={this.startClick}>
+      <div className="slider-button-container" onClick={this.startClick}>
         <div className={this.state.buttonClass}></div>
       </div>
     );
@@ -28,15 +29,15 @@ class ButtonSlider extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  [ownProps.purpose]: state[ownProps.purpose],
-  purpose: ownProps.purpose,
+  [ownProps.purpose]: state[ownProps.purpose],//the purpose variable that is changed
+  purpose: ownProps.purpose,//the purpose variable
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   ['dispatch' + ownProps.purpose]: (gameStarted) => {
     this.boundActionCreators = bindActionCreators(actionCreators, dispatch);
     dispatch(this.boundActionCreators[ownProps.actionDispatched](gameStarted));
-  },
+  },//the actionDispatched prop bound as an action creator
 });
 
 const mergeProps = (propsFromState, propsFromDispatch, ownProps) => (

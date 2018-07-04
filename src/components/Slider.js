@@ -9,33 +9,37 @@ class Slider extends Component {
     this.state = { start: false, position: 100, };
   }
 
+  //sets start as true and begins tracking the position of the mouse
   start = () => {
     console.log('start');
     !this.state.start && this.setState({ start: true });
   };
 
+  //ends tracking of the mouse position
   end = () => {
     console.log('end');
     this.state.start && this.setState({ start: false });
   };
 
+  //moves the slider button
   moving = (event) => {
     if (this.state.start) {
       this.positionSetter(event);
     }
   };
 
+  //sets position at click - when clicked, button moved directly, not dragged
   click = (event) => {
     this.positionSetter(event);
     this.setState({ start: false });
   };
 
+  //
   positionSetter = (event) => {
     let inputRect =  this.refs.sliderCont.getBoundingClientRect();
-    let dist = event.clientX - inputRect.left - 10;
-    console.log(event.clientX, dist, this.state.start);
-    dist >= 0 && dist < 200 && this.setState({ position: dist });
-    this.props.volumeChange(dist / 200);
+    let dist = event.clientX - inputRect.left - 10;//measures left distance
+    dist >= 0 && dist < 200 && this.setState({ position: dist });//changes position of btn
+    this.props.volumeChange(dist / 200);//changes the global volume var
   };
 
   render() {

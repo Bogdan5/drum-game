@@ -39,34 +39,40 @@ class App extends Component {
         url2: 'https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3',
         message1: 'Closed-HH', message2: 'Snare', },
     ],
-      bankUpdated: false,
     };
   };
 
+  //when bank is changed, the display is reset to blank
   componentDidUpdate(prevProps) {
     this.props.bank !== prevProps.bank && this.props.reset();
   }
 
   render() {
+    //establishes the message in Display based on bank
     let displayMessage;
     if (this.props.drumClicked && this.props.started && !this.state.bankUpdated) {
-      displayMessage = this.props.bank ? this.state.drumPads[this.props.drumClicked].message1
-      : this.state.drumPads[this.props.drumClicked].message2;
+      displayMessage = this.props.bank ? this.state.drumPads[this.props.drumClicked - 1].message1
+      : this.state.drumPads[this.props.drumClicked - 1].message2;
     } else {
       displayMessage = '';
     };
 
     return (
         <div id="drum-machine" className="drum-machine">
+          {/* the 9 drumpads */}
           <div className="button-group">
             {this.state.drumPads.map((item, index)=><DrumPad key={index} clicker={this.drumBeat}
             url={this.props.bank ? item.url1 : item.url2 }
             name={item.name} id={item.id}/>)};
           </div>
           <div className="display">
+            {/* slider button that starts game */}
             <ButtonSlider purpose="gameStarted" actionDispatched="startGame"/>
+            {/* type of drum clicked */}
             <Display message={displayMessage}/>
+            {/* slider that sets volume */}
             <Slider/>
+            {/* slider button that changes bank */}
             <ButtonSlider purpose="bank" actionDispatched="bankChange"/>
           </div>
         </div>
@@ -81,7 +87,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  reset: () => dispatch(drumBeat(null)),
+  reset: () => dispatch(drumBeat(null)),//resets the drumClicked clicked to null when bank changed
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
