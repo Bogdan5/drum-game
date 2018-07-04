@@ -12,18 +12,13 @@ class ButtonSlider extends Component {
 
   startClick = (event) => {
     event.stopPropagation();
-    console.log('gameStarted', this.props[this.props.purpose]);
     this.props['do' + this.props.purpose]();
-
     this.setState({ buttonClass: !this.props[this.props.purpose] ?
       'start-button animate-right-start-button' : 'start-button animate-left-start-button',
     });
-    console.log('btClass', this.state.buttonClass);
-    console.log('gameStarted2', this.props[this.props.purpose]);
   };
 
   render() {
-    console.log('render', this.state.buttonClass);
     return (
       <div className="start-container" onClick={this.startClick}>
         <div className={this.state.buttonClass}></div>

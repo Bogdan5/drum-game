@@ -10,53 +10,57 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { drumPads: [
-      { id: 1, name: 'q', url: this.props.bank ?
-      'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3'
-      : 'https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3',
-        message: this.props.bank ? 'Heater-1' : 'Chord-1', },
-      { id: 2, name: 'w', url: this.props.bank ?
-      'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3' :
-      'https://s3.amazonaws.com/freecodecamp/drums/Chord_2.mp3',
-        message: this.props.bank ? 'Heater-2' : 'Chord-2', },
-      { id: 3, name: 'e', url: this.props.bank ?
-      'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3' :
-      'https://s3.amazonaws.com/freecodecamp/drums/Chord_3.mp3',
-        message: this.props.bank ? 'Heater-3' : 'Chord-3', },
-      { id: 4, name: 'a', url: this.props.bank ?
-      'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3' :
-      'https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3',
-        message: this.props.bank ? 'Heater-4' : 'Shaker', },
-      { id: 5, name: 's', url: this.props.bank ?
-      'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3' :
-      'https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3',
-        message: this.props.bank ? 'Clap' : 'Open-HH', },
-      { id: 6, name: 'd', url: this.props.bank ?
-      'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3' :
-      'https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3',
-        message: this.props.bank ? 'Open-HH' : 'Closed-HH', },
-      { id: 7, name: 'z', url: this.props.bank ?
-      'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3' :
-      'https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3',
-        message: this.props.bank ? "Kick-n/'-Hat" : 'Punchy-Kick', },
-      { id: 8, name: 'x', url: this.props.bank ?
-      'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3' :
-      'https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3',
-        message: this.props.bank ? 'Kick' : 'Side-Stick', },
-      { id: 9, name: 'c', url: this.props.bank ?
-      'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3' :
-      'https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3',
-        message: this.props.bank ? 'Closed-HH' : 'Snare', },
-    ], };
+      { id: 1, name: 'q', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3',
+        url2: 'https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3',
+        message1: 'Heater-1', message2: 'Chord-1', },
+      { id: 2, name: 'w', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3',
+        url2: 'https://s3.amazonaws.com/freecodecamp/drums/Chord_2.mp3',
+        message1: 'Heater-2', message2: 'Chord-2', },
+      { id: 3, name: 'e', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3',
+        url2: 'https://s3.amazonaws.com/freecodecamp/drums/Chord_3.mp3',
+        message1: 'Heater-3', message2: 'Chord-3', },
+      { id: 4, name: 'a', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3',
+        url2: 'https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3',
+        message1: 'Heater-4', message2: 'Shaker', },
+      { id: 5, name: 's', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3',
+        url2: 'https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3',
+        message1: 'Clap', message2: 'Open-HH', },
+      { id: 6, name: 'd', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3',
+        url2: 'https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3',
+        message1: 'Open-HH', message2: 'Closed-HH', },
+      { id: 7, name: 'z', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3',
+        url2: 'https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3',
+        message1: "Kick-n/'-Hat", message2: 'Punchy-Kick', },
+      { id: 8, name: 'x', url1: 'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3',
+        url2: 'https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3',
+        message1: 'Kick', message2: 'Side-Stick', },
+      { id: 9, name: 'c', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3',
+        url2: 'https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3',
+        message1: 'Closed-HH', message2: 'Snare', },
+    ],
+      bankUpdated: false,
+    };
   };
 
+  componentDidUpdate(prevProps) {
+    this.props.bank !== prevProps.bank && this.setState({ bankUpdated: true });
+  }
+
   render() {
-    let displayMessage = this.props.drumClicked ?
-    this.state.drumPads[this.props.drumClicked - 1].message : '';
+    let displayMessage;
+    if (this.props.drumClicked && this.props.started && !this.state.bankUpdated) {
+      displayMessage = this.props.bank ? this.state.drumPads[this.props.drumClicked].message1
+      : this.state.drumPads[this.props.drumClicked].message2;
+    } else {
+      displayMessage = '';
+    };
+
     return (
         <div id="drum-machine" className="drum-machine">
           <div className="button-group">
             {this.state.drumPads.map((item, index)=><DrumPad key={index} clicker={this.drumBeat}
-            url={item.url} message={item.message} name={item.name} id={item.id}/>)};
+            url={this.props.bank ? item.url1 : item.url2 }
+            name={item.name} id={item.id}/>)};
           </div>
           <div className="display">
             <ButtonSlider purpose="gameStarted" actionDispatched="startGame"/>
@@ -69,6 +73,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ started: state.gameStarted, drumClicked: state.drumClicked });
+const mapStateToProps = (state) => ({
+  started: state.gameStarted,
+  drumClicked: state.drumClicked,
+  bank: state.bank,
+});
 
 export default connect(mapStateToProps, null)(App);
