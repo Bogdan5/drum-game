@@ -11,31 +11,31 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { drumPads: [
-      { id: 1, name: 'q', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3',
+      { id: 1, name: 'Q', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3',
         url2: 'https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3',
         message1: 'Heater-1', message2: 'Chord-1', },
-      { id: 2, name: 'w', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3',
+      { id: 2, name: 'W', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3',
         url2: 'https://s3.amazonaws.com/freecodecamp/drums/Chord_2.mp3',
         message1: 'Heater-2', message2: 'Chord-2', },
-      { id: 3, name: 'e', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3',
+      { id: 3, name: 'E', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3',
         url2: 'https://s3.amazonaws.com/freecodecamp/drums/Chord_3.mp3',
         message1: 'Heater-3', message2: 'Chord-3', },
-      { id: 4, name: 'a', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3',
+      { id: 4, name: 'A', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3',
         url2: 'https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3',
         message1: 'Heater-4', message2: 'Shaker', },
-      { id: 5, name: 's', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3',
+      { id: 5, name: 'S', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3',
         url2: 'https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3',
         message1: 'Clap', message2: 'Open-HH', },
-      { id: 6, name: 'd', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3',
+      { id: 6, name: 'D', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3',
         url2: 'https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3',
         message1: 'Open-HH', message2: 'Closed-HH', },
-      { id: 7, name: 'z', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3',
+      { id: 7, name: 'Z', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3',
         url2: 'https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3',
         message1: "Kick-n/'-Hat", message2: 'Punchy-Kick', },
-      { id: 8, name: 'x', url1: 'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3',
+      { id: 8, name: 'X', url1: 'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3',
         url2: 'https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3',
         message1: 'Kick', message2: 'Side-Stick', },
-      { id: 9, name: 'c', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3',
+      { id: 9, name: 'C', url1: 'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3',
         url2: 'https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3',
         message1: 'Closed-HH', message2: 'Snare', },
     ],
@@ -65,15 +65,15 @@ class App extends Component {
             url={this.props.bank ? item.url1 : item.url2 }
             name={item.name} id={item.id}/>)};
           </div>
-          <div className="display">
+          <div className="display-container">
             {/* slider button that starts game */}
-            <ButtonSlider purpose="gameStarted" actionDispatched="startGame"/>
+            <ButtonSlider purpose="gameStarted" actionDispatched="startGame" label="Start game"/>
             {/* type of drum clicked */}
             <Display message={displayMessage}/>
             {/* slider that sets volume */}
             <Slider/>
             {/* slider button that changes bank */}
-            <ButtonSlider purpose="bank" actionDispatched="bankChange"/>
+            <ButtonSlider purpose="bank" actionDispatched="bankChange" label="Bank"/>
           </div>
         </div>
     );

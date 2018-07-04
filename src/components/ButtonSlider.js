@@ -15,14 +15,18 @@ class ButtonSlider extends Component {
     event.stopPropagation();
     this.props['do' + this.props.purpose]();
     this.setState({ buttonClass: !this.props[this.props.purpose] ?
-      'slider-button animate-right-slider-button' : 'start-button animate-left-slider-button',
+      'slider-button animate-right-slider-button' : 'slider-button animate-left-slider-button',
     });
   };
 
   render() {
     return (
-      <div className="slider-button-container" onClick={this.startClick}>
-        <div className={this.state.buttonClass}></div>
+      <div className="ButtonSlider">
+        <p>{this.props.label}</p>
+        <div className="slider-button-container" onClick={this.startClick}>
+          <div className={this.state.buttonClass}></div>
+        </div>
+
       </div>
     );
   }
@@ -31,6 +35,7 @@ class ButtonSlider extends Component {
 const mapStateToProps = (state, ownProps) => ({
   [ownProps.purpose]: state[ownProps.purpose],//the purpose variable that is changed
   purpose: ownProps.purpose,//the purpose variable
+  label: ownProps.label,//label before slider container
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
