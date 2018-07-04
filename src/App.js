@@ -5,6 +5,7 @@ import ButtonSlider from './components/ButtonSlider.js';
 import Slider from './components/Slider.js';
 import './App.css';
 import { connect } from 'react-redux';
+import { drumBeat } from './actions/actionCreators.js';
 
 class App extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    this.props.bank !== prevProps.bank && this.setState({ bankUpdated: true });
+    this.props.bank !== prevProps.bank && this.props.reset();
   }
 
   render() {
@@ -79,4 +80,8 @@ const mapStateToProps = (state) => ({
   bank: state.bank,
 });
 
-export default connect(mapStateToProps, null)(App);
+const mapDispatchToProps = (dispatch) => ({
+  reset: () => dispatch(drumBeat(null)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
